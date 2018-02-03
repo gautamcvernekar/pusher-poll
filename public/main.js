@@ -4,7 +4,7 @@ form.addEventListener('submit',(e)=> {
     const choice = document.querySelector('input[name=os]:checked').value;
     const data = {os: choice};
 
-    fetch('http://localhost:3000/poll', {
+    fetch('https://pusherpoll.herokuapp.com/poll', {
         method: 'post',
         body: JSON.stringify(data),
         headers: new Headers({
@@ -15,7 +15,7 @@ form.addEventListener('submit',(e)=> {
 
 });
 
-fetch('http://localhost:3000/poll').then(res=>res.json()).then(data => {
+fetch('https://pusherpoll.herokuapp.com/poll').then(res=>res.json()).then(data => {
     const votes = data.votes;
     const totalVotes = votes.length;
     const voteCounts = votes.reduce((acc,vote) =>((acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.points)),acc), {});
